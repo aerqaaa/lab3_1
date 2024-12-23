@@ -21,8 +21,15 @@ double F(double x, double a, double b, double c) {
     }
 }
 
+// Функция для вывода числа с удалением лишних нулей
+void printNumber(double num) {
+    cout << fixed << setprecision(10) << num; // Устанавливаем высокую точность для округления
+    cout << std::showpoint; // Показываем десятичную точку
+    cout << std::defaultfloat; // Возвращаем к стандартному формату
+}
+
 int main() {
-    // Установка локали для поддержки русского языка
+    // Установка setlocale для поддержки русского языка
     setlocale(LC_ALL, "ru_RU.UTF-8");
 
     double x1, x2, a, b, c;
@@ -40,12 +47,14 @@ int main() {
 
     // Вывод заполненных массивов
     for (int i = 0; i < SIZE; ++i) {
-        cout << fixed << setprecision(2) << arr1[i] << (i < SIZE - 1 ? " " : "");
+        printNumber(arr1[i]);
+        if (i < SIZE - 1) cout << " ";
     }
     cout << endl;
 
     for (int i = 0; i < SIZE; ++i) {
-        cout << fixed << setprecision(2) << arr2[i] << (i < SIZE - 1 ? " " : "");
+        printNumber(arr2[i]);
+        if (i < SIZE - 1) cout << " ";
     }
     cout << endl;
 
@@ -55,13 +64,15 @@ int main() {
         for (int j = 1; j < 5 && i + j < SIZE; ++j) {
             minVal = min(minVal, arr1[i + j]);
         }
-        cout << fixed << setprecision(2) << minVal << endl;
+        printNumber(minVal);
+        cout << endl;
     }
 
     // Сортировка первого массива и вывод его
     sort(arr1, arr1 + SIZE);
     for (int i = 0; i < SIZE; ++i) {
-        cout << fixed << setprecision(2) << arr1[i] << (i < SIZE - 1 ? " " : "");
+        printNumber(arr1[i]);
+        if (i < SIZE - 1) cout << " ";
     }
     cout << endl;
 
@@ -109,13 +120,15 @@ int main() {
 
     // Вывод перераспределенных массивов
     for (int i = 0; i < index1; ++i) {
-        cout << fixed << setprecision(2) << newArr1[i] << (i < index1 - 1 ? " " : "");
+        printNumber(newArr1[i]);
+        if (i < index1 - 1) cout << " ";
     }
 
     cout << endl;
 
     for (int i = 0; i < index2; ++i) {
-        cout << fixed << setprecision(2) << newArr2[i] << (i < index2 - 1 ? " " : "");
+        printNumber(newArr2[i]);
+        if (i < index2 - 1) cout << " ";
     }
 
     cout << endl;
